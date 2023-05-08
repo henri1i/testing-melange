@@ -1,19 +1,18 @@
 { pkgs, ocamlPackages, nix-filter }:
-with ocamlPackages; buildDunePackage rec {
+with ocamlPackages; buildDunePackage {
   pname = "minimal-melange";
   version = "0.0.0-dev";
   
   src = with nix-filter.lib;
     filter {
       root = ./../.;
-      iniclude = [
+      include = [
         "dune-project"
         "src"
       ];
     };
 
   propagateBuildInputs = [
-    melange 
-    reason_react 
+    reason
   ];
 }
