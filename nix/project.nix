@@ -1,4 +1,5 @@
-{ pkgs, ocamlPackages, nix-filter }:
+{ pkgs, ocamlPackages, nix-filter, app }:
+
 with ocamlPackages; buildDunePackage {
   pname = "minimal-melange";
   version = "0.0.0-dev";
@@ -14,5 +15,8 @@ with ocamlPackages; buildDunePackage {
 
   propagateBuildInputs = [
     reason
+    melange
   ];
+
+  buildInputs = [ app ];
 }
